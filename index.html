@@ -319,10 +319,7 @@ class Component extends DCLogic {
     this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
     // El volumen ya viene bajado en el archivo: iOS ignora audio.volume.
     this.audio = new Audio('assets/cancion.mp3');
-    this.audio.loop = true;
-    // Arranca en el 0:10 (solo se puede fijar cuando el archivo ya cargó); al repetir vuelve al inicio.
-    this.audio.preload = 'auto';
-    this.audio.addEventListener('loadedmetadata', () => { this.audio.currentTime = 10; }, { once: true });
+    // Suena una sola vez. El archivo ya viene recortado desde el 0:10 de la canción: saltar con currentTime falla en Safari de iOS.
     document.documentElement.style.overflow = 'hidden';
     this.audio.onplay = () => this.setState({ playing: true });
     this.audio.onpause = () => this.setState({ playing: false });
