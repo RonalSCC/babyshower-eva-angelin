@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@500;700;800&amp;family=Pacifico&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFC9DF;color:#5A1E47;font-family:'Nunito',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#D6337A}a:hover{color:#B0215F}
+input,button{font-family:inherit}
+*:focus-visible{outline:3px solid #D6337A;outline-offset:2px}
+@keyframes twinkle{0%,100%{transform:scale(.4) rotate(0deg);opacity:.25}50%{transform:scale(1) rotate(20deg);opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+</style>
+</helmet>
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<symbol id="hib" viewBox="-50 -50 100 100"><g fill="currentColor"><ellipse cx="0" cy="-24" rx="18" ry="25"></ellipse><ellipse cx="0" cy="-24" rx="18" ry="25" transform="rotate(72)"></ellipse><ellipse cx="0" cy="-24" rx="18" ry="25" transform="rotate(144)"></ellipse><ellipse cx="0" cy="-24" rx="18" ry="25" transform="rotate(216)"></ellipse><ellipse cx="0" cy="-24" rx="18" ry="25" transform="rotate(288)"></ellipse></g><circle r="10" fill="#fff" opacity=".45"></circle><path d="M0 0 L10 -26" stroke="#F7C948" stroke-width="3" stroke-linecap="round"></path><circle cx="10" cy="-27" r="4" fill="#F7C948"></circle><circle cx="5" cy="-30" r="3" fill="#F7C948"></circle><circle cx="14" cy="-22" r="3" fill="#F7C948"></circle></symbol>
+<symbol id="spk" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.6 6.2 2.6 9.6 12 12-9.4 2.4-11.4 5.8-12 12-.6-6.2-2.6-9.6-12-12 9.4-2.4 11.4-5.8 12-12z"></path></symbol>
+<symbol id="leaf" viewBox="0 0 60 60"><path fill="currentColor" d="M30 58C6 44 4 18 30 2c26 16 24 42 0 56z"></path><path d="M30 8v48" stroke="#fff" stroke-opacity=".35" stroke-width="2.5" fill="none"></path></symbol>
+</defs>
+</svg>
+<main style="max-width:440px;margin:0 auto;background:#FFF4F8;min-height:100vh;overflow:hidden;position:relative">
+
+<section data-screen-label="Hero" style="position:relative;background:#FFD6E7;padding:22px 20px 0;overflow:hidden">
+<svg width="120" height="120" style="position:absolute;top:-30px;left:-34px;color:#7CC9A3;transform:rotate(-30deg)"><use href="#leaf"></use></svg>
+<svg width="90" height="90" style="position:absolute;top:-18px;right:-24px;color:#5DB58A;transform:rotate(40deg)"><use href="#leaf"></use></svg>
+<svg width="62" height="62" style="position:absolute;top:24px;right:18px;color:#E23A6A"><use href="#hib"></use></svg>
+<svg width="38" height="38" style="position:absolute;top:70px;left:14px;color:#FF8FBE"><use href="#hib"></use></svg>
+{{ heroSparkles }}
+<div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-top:26px">
+<span style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#D6337A;font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;border-radius:999px;box-shadow:0 3px 0 #F4A6C8">
+<svg width="12" height="12" style="color:#F7C948"><use href="#spk"></use></svg>Baby Shower<svg width="12" height="12" style="color:#F7C948"><use href="#spk"></use></svg>
+</span>
+<div style="font-family:'Pacifico',cursive;font-size:24px;color:#5A1E47;margin-top:10px">Aloha, bienvenida</div>
+<h1 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:62px;line-height:.95;margin:0;color:#D6337A;text-wrap:balance;text-shadow:3px 3px 0 #fff,6px 6px 0 #F4A6C8">{{ babyName }}</h1>
+</div>
+<div style="position:relative;height:330px;margin-top:6px;display:flex;justify-content:center">
+<div style="position:absolute;bottom:-90px;left:50%;width:330px;height:330px;margin-left:-165px;border-radius:50%;background:#fff"></div>
+<img src="assets/angel-bebe.jpeg" alt="Angel bebé" style="position:relative;height:320px;width:auto;mix-blend-mode:multiply;animation:{{ bobAnim }}"></img>
+<svg width="46" height="46" style="position:absolute;bottom:60px;left:16px;color:#E23A6A;z-index:2"><use href="#hib"></use></svg>
+<svg width="30" height="30" style="position:absolute;bottom:120px;right:30px;color:#FF8FBE;z-index:2"><use href="#hib"></use></svg>
+</div>
+<svg viewBox="0 0 400 24" preserveAspectRatio="none" style="display:block;position:absolute;left:0;bottom:-1px;width:100%;height:24px;z-index:3"><path fill="#FFF4F8" d="M0 24V12c25 0 25-12 50-12s25 12 50 12 25-12 50-12 25 12 50 12 25-12 50-12 25 12 50 12 25-12 50-12 25 12 50 12v12z"></path></svg>
+</section>
+
+<section style="padding:6px 20px 0;position:relative;z-index:4;margin-top:-6px">
+<div style="background:#fff;border-radius:28px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 6px 0 #F4A6C8,0 14px 30px rgba(214,51,122,.15)">
+<div style="display:flex;flex-direction:column">
+<span style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;color:#3E9A72;text-transform:uppercase;letter-spacing:.06em">Domingo</span>
+<span style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:26px;line-height:1.05;color:#5A1E47">8 de noviembre</span>
+</div>
+<span style="background:#D6337A;color:#fff;font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;padding:10px 16px;border-radius:999px;white-space:nowrap">2:00 PM</span>
+</div>
+</section>
+
+<sc-if value="{{ showCountdown }}" hint-placeholder-val="{{ true }}">
+<section style="padding:32px 20px 0">
+<div style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Pacifico',cursive;font-size:22px;color:#D6337A;margin-bottom:14px">
+<svg width="14" height="14" style="color:#F7C948"><use href="#spk"></use></svg>Faltan<svg width="14" height="14" style="color:#F7C948"><use href="#spk"></use></svg>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
+<sc-for list="{{ countdown }}" as="c" hint-placeholder-count="4">
+<div style="background:#FFD6E7;border-radius:22px;padding:14px 4px 12px;display:flex;flex-direction:column;align-items:center;gap:2px">
+<span style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:30px;line-height:1;color:#5A1E47;font-variant-numeric:tabular-nums">{{ c.v }}</span>
+<span style="font-size:12px;font-weight:800;color:#B0215F;text-transform:uppercase;letter-spacing:.06em">{{ c.l }}</span>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<section data-screen-label="Lugar" style="padding:36px 20px 0;position:relative">
+<svg width="40" height="40" style="position:absolute;top:22px;right:20px;color:#FF8FBE;animation:sway 4s ease-in-out infinite"><use href="#hib"></use></svg>
+<h2 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:32px;margin:0 0 14px;color:#5A1E47">¿Dónde?</h2>
+<div style="background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 6px 0 #BFE6D2">
+<div style="padding:18px 20px;display:flex;gap:14px;align-items:flex-start">
+<span style="flex:none;width:44px;height:44px;border-radius:50%;background:#E3F5EC;color:#3E9A72;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+<div>
+<div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;line-height:1.2;color:#5A1E47">Conjunto Bosques de Kennedy</div>
+<div style="font-size:15px;line-height:1.45;font-weight:700;color:#7A3E66">Dg. 5a # 72c-10<br>Kennedy, Bogotá</div>
+</div>
+</div>
+<iframe src="https://maps.google.com/maps?q=4.6215117,-74.1558383&amp;z=16&amp;output=embed" title="Mapa" loading="lazy" style="display:block;width:100%;height:200px;border:0"></iframe>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px">
+<a href="{{ mapsUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:999px;background:#E3F5EC;color:#256B4D;text-decoration:none;font-weight:800;font-size:15px" style-hover="background:#CDEEDD">Google Maps</a>
+<a href="{{ wazeUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:999px;background:#E3F5EC;color:#256B4D;text-decoration:none;font-weight:800;font-size:15px" style-hover="background:#CDEEDD">Waze</a>
+</div>
+</div>
+<a href="{{ calUrl }}" target="_blank" rel="noopener" style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:999px;border:2px dashed #F4A6C8;color:#B0215F;text-decoration:none;font-weight:800;font-size:15px" style-hover="background:#FFE6F0">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"></path></svg>Agregar a mi calendario
+</a>
+</section>
+
+<section data-screen-label="Confirmar" id="rsvp" style="padding:40px 20px 0;position:relative">
+<div style="background:#fff;border-radius:32px;padding:26px 20px 22px;position:relative;box-shadow:0 6px 0 #F4A6C8,0 14px 30px rgba(214,51,122,.12)">
+<svg width="56" height="56" style="position:absolute;top:-22px;right:18px;color:#E23A6A"><use href="#hib"></use></svg>
+<svg width="18" height="18" style="position:absolute;top:-8px;right:84px;color:#F7C948"><use href="#spk"></use></svg>
+
+<sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+<h2 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:30px;margin:0;color:#5A1E47">¿Nos acompañas?</h2>
+<p style="margin:6px 0 20px;font-size:15px;line-height:1.5;color:#7A3E66;font-weight:700">Confírmanos antes del 1 de noviembre.</p>
+<div style="display:flex;flex-direction:column;gap:20px">
+<label style="display:flex;flex-direction:column;gap:8px">
+<span style="font-size:14px;font-weight:800;color:#5A1E47">Tu nombre</span>
+<input type="text" value="{{ form.name }}" onChange="{{ onName }}" placeholder="Nombre y apellido" autocomplete="name" style="font-size:17px;padding:14px 18px;border:2px solid #FFC9DF;border-radius:18px;background:#FFF4F8;color:#5A1E47;outline:none;width:100%;box-sizing:border-box" style-focus="border-color:#D6337A;background:#fff"></input>
+<sc-if value="{{ errors.name }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:800;color:#B0215F">{{ errors.name }}</span></sc-if>
+</label>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font-size:14px;font-weight:800;color:#5A1E47">¿Asistirás?</span>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<button type="button" onClick="{{ setYes }}" style="{{ yesStyle }}">¡Sí, ahí estaré!</button>
+<button type="button" onClick="{{ setNo }}" style="{{ noStyle }}">No podré ir</button>
+</div>
+<sc-if value="{{ errors.attending }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:800;color:#B0215F">{{ errors.attending }}</span></sc-if>
+</div>
+<sc-if value="{{ isYes }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<div style="display:flex;flex-direction:column">
+<span style="font-size:14px;font-weight:800;color:#5A1E47">Acompañantes</span>
+<span style="font-size:13px;color:#7A3E66;font-weight:700">Sin contarte a ti · máx. 5</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;background:#FFF4F8;border-radius:999px;padding:4px">
+<button type="button" onClick="{{ dec }}" aria-label="Menos" style="width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#D6337A;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 0 #F4A6C8" style-hover="background:#FFE6F0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"></path></svg></button>
+<span style="min-width:32px;text-align:center;font-family:'Fredoka',sans-serif;font-size:22px;font-weight:700;color:#5A1E47">{{ form.guests }}</span>
+<button type="button" onClick="{{ inc }}" aria-label="Más" style="width:44px;height:44px;border:0;border-radius:50%;background:#D6337A;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 0 #9E1C55" style-hover="background:#B0215F"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14M12 5v14"></path></svg></button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ errors.send }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:800;color:#B0215F">{{ errors.send }}</span></sc-if>
+<button type="button" onClick="{{ submit }}" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px 20px;border:0;border-radius:999px;background:#D6337A;color:#fff;font-family:'Fredoka',sans-serif;font-size:19px;font-weight:600;cursor:pointer;box-shadow:0 5px 0 #9E1C55" style-hover="background:#C42A6D" style-active="transform:translateY(3px);box-shadow:0 2px 0 #9E1C55">
+{{ submitLabel }}<svg width="16" height="16" style="color:#F7C948"><use href="#spk"></use></svg>
+</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ showDone }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
+<span style="width:56px;height:56px;border-radius:50%;background:#E3F5EC;color:#3E9A72;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+<div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:30px;color:#D6337A;margin-top:6px">{{ doneTitle }}</div>
+<p style="margin:0;font-size:15px;line-height:1.5;font-weight:700;color:#7A3E66">{{ doneBody }}</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:12px 0 16px">
+<sc-for list="{{ summary }}" as="r" hint-placeholder-count="2">
+<span style="background:#FFF4F8;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:800;color:#5A1E47">{{ r.v }}</span>
+</sc-for>
+</div>
+<button type="button" onClick="{{ edit }}" style="padding:12px 20px;border:2px solid #FFC9DF;border-radius:999px;background:#fff;color:#B0215F;font-size:15px;font-weight:800;cursor:pointer" style-hover="background:#FFE6F0">Cambiar mi respuesta</button>
+</div>
+</sc-if>
+</div>
+</section>
+
+<section style="position:relative;margin-top:30px;height:400px;overflow:hidden">
+<svg width="130" height="130" style="position:absolute;bottom:40px;left:-40px;color:#7CC9A3;transform:rotate(-50deg)"><use href="#leaf"></use></svg>
+<svg width="110" height="110" style="position:absolute;bottom:70px;right:-36px;color:#5DB58A;transform:rotate(45deg)"><use href="#leaf"></use></svg>
+<svg width="52" height="52" style="position:absolute;bottom:40px;left:30px;color:#E23A6A;z-index:2"><use href="#hib"></use></svg>
+<svg width="36" height="36" style="position:absolute;bottom:110px;right:34px;color:#FF8FBE;z-index:2"><use href="#hib"></use></svg>
+{{ footerSparkles }}
+<img src="assets/angel-baile.jpeg" alt="" style="position:absolute;left:50%;top:0;width:400px;height:380px;margin-left:-200px;object-fit:cover;object-position:center 55%;mix-blend-mode:multiply"></img>
+</section>
+
+<footer style="background:#D6337A;color:#fff;padding:26px 20px 34px;text-align:center;position:relative">
+<svg viewBox="0 0 400 24" preserveAspectRatio="none" style="display:block;position:absolute;left:0;top:-23px;width:100%;height:24px"><path fill="#D6337A" d="M0 24V12c25 0 25-12 50-12s25 12 50 12 25-12 50-12 25 12 50 12 25-12 50-12 25 12 50 12 25-12 50-12 25 12 50 12v12z"></path></svg>
+<div style="font-family:'Pacifico',cursive;font-size:28px;line-height:1.3">¡Te esperamos!</div>
+<div style="font-size:14px;font-weight:800;margin-top:6px;letter-spacing:.04em">Ohana significa familia</div>
+</footer>
+</main>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#FFD6E7"></rect><g transform="translate(50 50) scale(.4)" fill="#D6337A"><ellipse cx="0" cy="-24" rx="18" ry="25"></ellipse><ellipse cx="0" cy="-24" rx="18" ry="25" transform="rotate(72)"></ellipse><ellipse cx="0" cy="-24" rx="18" ry="25" transform="rotate(144)"></ellipse><ellipse cx="0" cy="-24" rx="18" ry="25" transform="rotate(216)"></ellipse><ellipse cx="0" cy="-24" rx="18" ry="25" transform="rotate(288)"></ellipse><circle r="9" fill="#F7C948"></circle></g></svg></template>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;babyName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Eva Angelin&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showCountdown&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const KEY = 'babyshower-rsvp-v1';
+// URL del Web App de Apps Script (ver apps-script.gs). Vacía = solo localStorage.
+const RSVP_URL = 'https://script.google.com/macros/s/AKfycbwmKPW18Ey6PLtzGENh5sJSi5nsBGTHTAuisycHgpOw_L6NxwuY4HtlRLj8nIG2Mb3M4g/exec';
+const TARGET = new Date('2026-11-08T14:00:00-05:00').getTime();
+const EMPTY = { name: '', attending: null, guests: 0 };
+const ADDR = 'Conjunto Bosques de Kennedy, Dg. 5a #72c-10, Kennedy, Bogotá';
+const h = React.createElement;
+
+function sparkles(list) {
+  return h(React.Fragment, null, list.map((s, i) => h('svg', {
+    key: i, width: s.s, height: s.s, viewBox: '0 0 24 24',
+    style: { position: 'absolute', top: s.t, left: s.l, color: s.c || '#F7C948', zIndex: 2, pointerEvents: 'none',
+      animation: `twinkle ${s.d || 2.4}s ease-in-out ${s.dl || 0}s infinite` }
+  }, h('path', { fill: 'currentColor', d: 'M12 0c.6 6.2 2.6 9.6 12 12-9.4 2.4-11.4 5.8-12 12-.6-6.2-2.6-9.6-12-12 9.4-2.4 11.4-5.8 12-12z' }))));
+}
+const HERO_SPK = [
+  { t: 120, l: '12%', s: 18 }, { t: 40, l: '30%', s: 12, c: '#fff', dl: .6 }, { t: 150, l: '84%', s: 22, dl: 1.1 },
+  { t: 260, l: '8%', s: 14, c: '#fff', dl: .3 }, { t: 330, l: '86%', s: 16, dl: 1.6 }, { t: 420, l: '18%', s: 22, dl: .9 },
+  { t: 470, l: '78%', s: 12, c: '#fff', dl: .2 }, { t: 90, l: '70%', s: 10, c: '#fff', dl: 1.4 }
+];
+const FOOT_SPK = [
+  { t: 40, l: '16%', s: 20 }, { t: 90, l: '80%', s: 16, dl: .7 }, { t: 200, l: '10%', s: 12, c: '#FF8FBE', dl: 1.2 },
+  { t: 160, l: '88%', s: 22, dl: .4 }, { t: 20, l: '62%', s: 12, c: '#FF8FBE', dl: 1.8 }
+];
+
+class Component extends DCLogic {
+  state = { form: { ...EMPTY }, saved: null, errors: {}, now: Date.now(), sending: false };
+
+  componentDidMount() {
+    try {
+      const s = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (s) this.setState({ saved: s, form: { ...EMPTY, ...s } });
+    } catch (e) {}
+    this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+  }
+  componentWillUnmount() { clearInterval(this.t); }
+
+  setForm(p) { this.setState(s => ({ form: { ...s.form, ...p }, errors: {} })); }
+
+  submit = async () => {
+    if (this.state.sending) return;
+    const f = this.state.form, errors = {};
+    if (f.name.trim().length < 2) errors.name = 'Escribe tu nombre para saber quién viene.';
+    if (!f.attending) errors.attending = 'Elige una opción.';
+    if (Object.keys(errors).length) return this.setState({ errors });
+    // El id identifica al invitado: al cambiar la respuesta se sobrescribe su fila en la hoja.
+    const id = f.id || (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random().toString(36).slice(2));
+    const saved = { ...f, id, name: f.name.trim(), guests: f.attending === 'yes' ? f.guests : 0, at: new Date().toISOString() };
+    if (RSVP_URL) {
+      this.setState({ sending: true });
+      try {
+        // text/plain evita el preflight CORS, que Apps Script no responde.
+        const r = await fetch(RSVP_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(saved) });
+        if (!r.ok || !(await r.json()).ok) throw new Error('rsvp');
+      } catch (e) {
+        return this.setState({ sending: false, errors: { send: 'No pudimos guardar tu respuesta. Revisa tu conexión e inténtalo de nuevo.' } });
+      }
+    }
+    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    this.setState({ saved, sending: false });
+    const el = document.getElementById('rsvp');
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' });
+  };
+
+  seg(active) {
+    return { padding: '14px 10px', fontSize: 15, fontWeight: 800, cursor: 'pointer', borderRadius: 999, fontFamily: 'Nunito,sans-serif',
+      border: '2px solid ' + (active ? '#D6337A' : '#FFC9DF'), background: active ? '#D6337A' : '#fff', color: active ? '#fff' : '#B0215F' };
+  }
+
+  renderVals() {
+    const { form, saved, errors, now } = this.state;
+    const name = this.props.babyName || 'Eva Angelin';
+    const diff = Math.max(0, TARGET - now);
+    const pad = n => String(n).padStart(2, '0');
+    const d = Math.floor(diff / 864e5), hr = Math.floor(diff / 36e5) % 24, m = Math.floor(diff / 6e4) % 60, sec = Math.floor(diff / 1e3) % 60;
+    const yes = saved && saved.attending === 'yes';
+    const first = saved ? saved.name.split(' ')[0] : '';
+    const anim = this.props.animate ?? true;
+    return {
+      babyName: name,
+      heroSparkles: anim ? sparkles(HERO_SPK) : null,
+      footerSparkles: anim ? sparkles(FOOT_SPK) : null,
+      bobAnim: anim ? 'bob 3.2s ease-in-out infinite' : 'none',
+      showCountdown: this.props.showCountdown ?? true,
+      countdown: [{ v: d, l: 'Días' }, { v: pad(hr), l: 'Horas' }, { v: pad(m), l: 'Min' }, { v: pad(sec), l: 'Seg' }],
+      calUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('Baby Shower de ' + name) + '&dates=20261108T190000Z/20261108T230000Z&location=' + encodeURIComponent(ADDR),
+      mapsUrl: 'https://www.google.com/maps/search/?api=1&query=4.6215117,-74.1558383',
+      wazeUrl: 'https://waze.com/ul?ll=4.6215117,-74.1558383&navigate=yes',
+      form, errors,
+      showForm: !saved, showDone: !!saved,
+      isYes: form.attending === 'yes',
+      yesStyle: this.seg(form.attending === 'yes'), noStyle: this.seg(form.attending === 'no'),
+      onName: e => this.setForm({ name: e.target.value }),
+      setYes: () => this.setForm({ attending: 'yes' }),
+      setNo: () => this.setForm({ attending: 'no' }),
+      inc: () => this.setForm({ guests: Math.min(5, form.guests + 1) }),
+      dec: () => this.setForm({ guests: Math.max(0, form.guests - 1) }),
+      submit: this.submit,
+      submitLabel: this.state.sending ? 'Enviando…' : 'Confirmar asistencia',
+      edit: () => this.setState({ saved: null }),
+      doneTitle: yes ? '¡Mahalo, ' + first + '!' : 'Gracias, ' + first,
+      doneBody: yes ? 'Te esperamos el domingo 8 de noviembre a las 2:00 PM.' : 'Te vamos a extrañar. Gracias por avisarnos.',
+      summary: saved ? [
+        { v: yes ? 'Asistiré' : 'No podré ir' },
+        ...(yes ? [{ v: saved.guests === 0 ? 'Solo yo' : 'Yo +' + saved.guests }] : []),
+      ] : [],
+    };
+  }
+}
+</script>
+</body>
+</html>
