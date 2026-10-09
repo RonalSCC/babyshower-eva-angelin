@@ -22,6 +22,23 @@ input,button{font-family:inherit}
 @keyframes twinkle{0%,100%{transform:scale(.4) rotate(0deg);opacity:.25}50%{transform:scale(1) rotate(20deg);opacity:1}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:none}}
+@keyframes popIn{0%{opacity:0;transform:scale(.5)}100%{opacity:1;transform:none}}
+@keyframes leafIn{0%{opacity:0;transform:scale(.3)}100%{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes sealPop{0%{transform:none}40%{transform:scale(1.25)}100%{transform:scale(0) rotate(90deg);opacity:0}}
+@keyframes flapOpen{0%{transform:rotateX(0)}100%{transform:rotateX(180deg)}}
+@keyframes hide{to{visibility:hidden}}
+@keyframes checkDraw{0%,10%{stroke-dashoffset:30}35%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:30}}
+@keyframes outUp{to{opacity:0;transform:translateY(-40px)}}
+@keyframes outDown{to{opacity:0;transform:translateY(30px) scale(.9)}}
+@keyframes cardUp{0%{transform:none}100%{transform:translateY(-62px) rotate(-3deg)}}
+@keyframes pulse{0%{box-shadow:0 5px 0 #9E1C55,0 0 0 0 rgba(214,51,122,.45)}100%{box-shadow:0 5px 0 #9E1C55,0 0 0 20px rgba(214,51,122,0)}}
+@keyframes fall{0%{transform:translate3d(0,-12vh,0) rotate(0)}100%{transform:translate3d(var(--dx),112vh,0) rotate(var(--r))}}
+@keyframes burst{0%{opacity:1;transform:translate(-50%,-50%) scale(.2) rotate(0)}70%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--bx)),calc(-50% + var(--by))) scale(1) rotate(var(--r))}}
+@keyframes introOut{0%{opacity:1;transform:none}100%{opacity:0;transform:scale(1.2)}}
+@keyframes pageIn{0%{opacity:0;transform:translateY(30px) scale(.97)}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important}}
 </style>
 </helmet>
 <svg width="0" height="0" style="position:absolute">
@@ -31,7 +48,55 @@ input,button{font-family:inherit}
 <symbol id="leaf" viewBox="0 0 60 60"><path fill="currentColor" d="M30 58C6 44 4 18 30 2c26 16 24 42 0 56z"></path><path d="M30 8v48" stroke="#fff" stroke-opacity=".35" stroke-width="2.5" fill="none"></path></symbol>
 </defs>
 </svg>
-<main style="max-width:440px;margin:0 auto;background:#FFF4F8;min-height:100vh;overflow:hidden;position:relative">
+<sc-if value="{{ showIntro }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-label="Bienvenida" style="position:fixed;inset:0;z-index:100;overflow:hidden;background:radial-gradient(circle at 50% 38%,#FFF4F8 0%,#FFD6E7 45%,#FFB3D1 100%);animation:{{ introAnim }}">
+<div aria-hidden="true" style="position:absolute;top:34%;left:50%;width:900px;height:900px;margin:-450px 0 0 -450px;background:repeating-conic-gradient(rgba(255,255,255,.55) 0 8deg,transparent 8deg 22deg);-webkit-mask-image:radial-gradient(circle,#000 0,transparent 60%);mask-image:radial-gradient(circle,#000 0,transparent 60%);animation:spin 60s linear infinite"></div>
+{{ introFlowers }}
+{{ introSparkles }}
+<svg width="190" height="190" style="position:absolute;top:-60px;left:-60px;color:#7CC9A3;animation:leafIn 1s cubic-bezier(.34,1.56,.64,1) .1s both"><use href="#leaf" transform="rotate(-30 95 95)"></use></svg>
+<svg width="140" height="140" style="position:absolute;top:-40px;right:-44px;color:#5DB58A;animation:leafIn 1s cubic-bezier(.34,1.56,.64,1) .25s both"><use href="#leaf" transform="rotate(40 70 70)"></use></svg>
+<svg width="170" height="170" style="position:absolute;bottom:-56px;left:-50px;color:#5DB58A;animation:leafIn 1s cubic-bezier(.34,1.56,.64,1) .4s both"><use href="#leaf" transform="rotate(-150 85 85)"></use></svg>
+<svg width="200" height="200" style="position:absolute;bottom:-70px;right:-60px;color:#7CC9A3;animation:leafIn 1s cubic-bezier(.34,1.56,.64,1) .55s both"><use href="#leaf" transform="rotate(150 100 100)"></use></svg>
+<div style="position:relative;z-index:2;height:100%;max-width:440px;margin:0 auto;padding:24px 20px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+<div style="display:flex;flex-direction:column;align-items:center;animation:{{ headAnim }}">
+<span style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#D6337A;font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;border-radius:999px;box-shadow:0 3px 0 #F4A6C8;animation:fadeUp .7s ease .3s both"><svg width="12" height="12" style="color:#F7C948"><use href="#spk"></use></svg>Baby Shower<svg width="12" height="12" style="color:#F7C948"><use href="#spk"></use></svg></span>
+<div style="font-family:'Pacifico',cursive;font-size:24px;color:#5A1E47;margin-top:18px;animation:fadeUp .7s ease .5s both">Aloha, te invitamos a celebrar a</div>
+<div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:54px;line-height:1;margin-top:4px;color:#D6337A;text-shadow:3px 3px 0 #fff,6px 6px 0 #F4A6C8;animation:popIn .8s cubic-bezier(.34,1.56,.64,1) .7s both">{{ babyName }}</div>
+</div>
+<div style="margin-top:34px;animation:popIn .9s cubic-bezier(.34,1.56,.64,1) .95s both">
+<div style="position:relative;width:250px;height:166px;perspective:900px;animation:bob 3.2s ease-in-out 1.9s infinite">
+<svg width="22" height="22" style="position:absolute;top:-26px;left:-18px;color:#F7C948;animation:twinkle 2.2s ease-in-out infinite"><use href="#spk"></use></svg>
+<svg width="16" height="16" style="position:absolute;bottom:-18px;right:-14px;color:#fff;animation:twinkle 2.6s ease-in-out .7s infinite"><use href="#spk"></use></svg>
+<div style="position:absolute;inset:0;border-radius:16px;background:#E86FA3;box-shadow:0 10px 0 #C24F86,0 22px 40px rgba(214,51,122,.3)"></div>
+<div style="position:absolute;left:0;right:0;top:0;height:62%;background:#D6337A;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;border-radius:16px 16px 0 0;animation:{{ flapAnim }}"></div>
+<div style="position:absolute;left:16px;right:16px;top:12px;height:146px;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:center;padding-top:16px;box-sizing:border-box;z-index:1;animation:{{ cardAnim }}">
+<svg width="34" height="34" style="color:#E23A6A"><use href="#hib"></use></svg>
+<div style="font-family:'Pacifico',cursive;font-size:22px;color:#D6337A;margin-top:2px">¡Aloha!</div>
+</div>
+<div style="position:absolute;inset:0;border-radius:16px;background:#FF9FC6;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);z-index:2"></div>
+<div style="position:absolute;inset:0;border-radius:16px;background:linear-gradient(160deg,transparent 55%,rgba(255,255,255,.25));clip-path:polygon(0 100%,50% 52%,100% 100%);z-index:2"></div>
+<div style="position:absolute;left:0;right:0;top:0;height:62%;background:#E44F8C;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;z-index:3;animation:{{ flapTopAnim }}"></div>
+<div style="position:absolute;left:50%;top:62%;width:54px;height:54px;margin:-30px 0 0 -27px;border-radius:50%;background:#fff;box-shadow:0 3px 0 #F4A6C8;display:flex;align-items:center;justify-content:center;z-index:4;animation:{{ sealAnim }}">
+<svg width="40" height="40" style="color:#E23A6A;animation:sway 3s ease-in-out infinite"><use href="#hib"></use></svg>
+</div>
+</div>
+</div>
+<div style="margin-top:46px;animation:{{ btnAnim }}">
+<button type="button" onClick="{{ openIntro }}" style="display:flex;align-items:center;gap:10px;padding:18px 34px;border:0;border-radius:999px;background:#D6337A;color:#fff;font-family:'Fredoka',sans-serif;font-size:20px;font-weight:600;cursor:pointer;animation:fadeUp .7s ease 1.2s both,pulse 1.8s ease-out 1.9s infinite" style-hover="background:#C42A6D" style-active="transform:translateY(3px)">
+Abrir invitación<svg width="18" height="18" style="color:#F7C948;animation:twinkle 1.6s ease-in-out infinite"><use href="#spk"></use></svg>
+</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ burst }}" hint-placeholder-val="{{ false }}">{{ burstFlowers }}</sc-if>
+
+<button type="button" onClick="{{ toggleMusic }}" aria-label="{{ musicLabel }}" style="position:fixed;right:16px;bottom:16px;z-index:50;width:52px;height:52px;border-radius:50%;border:0;background:#D6337A;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 0 #9E1C55,0 8px 20px rgba(214,51,122,.3)" style-hover="background:#C42A6D">
+<sc-if value="{{ playing }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></sc-if>
+<sc-if value="{{ !playing }}" hint-placeholder-val="{{ true }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle><path d="M3 3l18 18"></path></svg></sc-if>
+</button>
+
+<main style="max-width:440px;margin:0 auto;background:#FFF4F8;min-height:100vh;overflow:hidden;position:relative;animation:{{ pageAnim }}">
 
 <section data-screen-label="Hero" style="position:relative;background:#FFD6E7;padding:22px 20px 0;overflow:hidden">
 <svg width="120" height="120" style="position:absolute;top:-30px;left:-34px;color:#7CC9A3;transform:rotate(-30deg)"><use href="#leaf"></use></svg>
@@ -101,6 +166,21 @@ input,button{font-family:inherit}
 <a href="{{ calUrl }}" target="_blank" rel="noopener" style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:999px;border:2px dashed #F4A6C8;color:#B0215F;text-decoration:none;font-weight:800;font-size:15px" style-hover="background:#FFE6F0">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"></path></svg>Agregar a mi calendario
 </a>
+</section>
+
+<section data-screen-label="Regalos" style="padding:36px 20px 0;position:relative">
+<h2 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:32px;margin:0 0 14px;color:#5A1E47">Regalos</h2>
+<div style="position:relative;margin:22px 6px 6px;transform:rotate(-2deg);background:#FFFDF3;border-radius:6px;padding:30px 18px 14px 26px;box-shadow:0 8px 18px rgba(90,30,71,.12);background-image:repeating-linear-gradient(transparent 0 39px,#F7D6E4 39px 41px);background-position:0 26px">
+<span style="position:absolute;left:14px;top:0;bottom:0;width:2px;background:#FFB3D1"></span>
+<svg width="44" height="44" style="position:absolute;top:-24px;left:50%;margin-left:-22px;color:#E23A6A;animation:sway 3s ease-in-out infinite"><use href="#hib"></use></svg>
+<div style="font-family:'Pacifico',cursive;font-size:22px;color:#D6337A;height:40px;line-height:40px;margin-top:-4px">No olvides traer:</div>
+<div style="display:flex;align-items:center;gap:12px;height:40px">
+<svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" style="flex:none"><rect x="2" y="2" width="26" height="26" rx="7" fill="#fff" stroke="#D6337A" stroke-width="2.5"></rect><path d="M8 15.5l5 5 9-11" fill="none" stroke="#3E9A72" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30" style="animation:checkDraw 3.2s ease-in-out 0s infinite"></path></svg>
+<span style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;color:#5A1E47">Un paquete de pañales</span></div>
+<div style="display:flex;align-items:center;gap:12px;height:40px">
+<svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" style="flex:none"><rect x="2" y="2" width="26" height="26" rx="7" fill="#fff" stroke="#D6337A" stroke-width="2.5"></rect><path d="M8 15.5l5 5 9-11" fill="none" stroke="#3E9A72" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30" style="animation:checkDraw 3.2s ease-in-out 0.4s infinite"></path></svg>
+<span style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;color:#5A1E47">Un regalo para Eva</span></div>
+</div>
 </section>
 
 <section data-screen-label="Confirmar" id="rsvp" style="padding:40px 20px 0;position:relative">
@@ -199,13 +279,37 @@ const HERO_SPK = [
   { t: 260, l: '8%', s: 14, c: '#fff', dl: .3 }, { t: 330, l: '86%', s: 16, dl: 1.6 }, { t: 420, l: '18%', s: 22, dl: .9 },
   { t: 470, l: '78%', s: 12, c: '#fff', dl: .2 }, { t: 90, l: '70%', s: 10, c: '#fff', dl: 1.4 }
 ];
+const INTRO_SPK = [
+  { t: '14%', l: '18%', s: 20 }, { t: '22%', l: '82%', s: 16, c: '#fff', dl: .5 }, { t: '48%', l: '8%', s: 14, c: '#fff', dl: 1 },
+  { t: '58%', l: '90%', s: 22, dl: .3 }, { t: '80%', l: '24%', s: 16, dl: 1.4 }, { t: '74%', l: '74%', s: 12, c: '#fff', dl: .8 }
+];
+const FLOWER_COLORS = ['#E23A6A', '#FF8FBE', '#D6337A', '#fff'];
+// Hibiscos que caen detrás de la portada.
+function fallingFlowers() {
+  return h(React.Fragment, null, Array.from({ length: 10 }, (_, i) => h('svg', {
+    key: i, width: 22 + (i * 7) % 26, height: 22 + (i * 7) % 26, 'aria-hidden': true,
+    style: { position: 'absolute', top: 0, left: (i * 37 + 5) % 100 + '%', color: FLOWER_COLORS[i % 4], opacity: .85, pointerEvents: 'none',
+      '--dx': (i % 2 ? 1 : -1) * (30 + i * 6) + 'px', '--r': (i % 2 ? 1 : -1) * (180 + i * 40) + 'deg',
+      animation: `fall ${7 + (i * 1.3) % 5}s linear ${-(i * 1.7) % 9}s infinite` }
+  }, h('use', { href: '#hib' }))));
+}
+// Explosión de hibiscos al abrir la invitación.
+function burstFlowers() {
+  return h('div', { 'aria-hidden': true, style: { position: 'fixed', inset: 0, zIndex: 101, pointerEvents: 'none', overflow: 'hidden' } },
+    Array.from({ length: 18 }, (_, i) => {
+      const a = i / 18 * Math.PI * 2, d = 160 + (i * 53) % 140, sz = 24 + (i * 11) % 28;
+      return h('svg', { key: i, width: sz, height: sz, style: { position: 'absolute', top: '62%', left: '50%', color: FLOWER_COLORS[i % 4],
+        '--bx': Math.cos(a) * d + 'px', '--by': Math.sin(a) * d + 'px', '--r': (i % 2 ? 1 : -1) * 220 + 'deg',
+        animation: `burst 1.1s cubic-bezier(.2,.8,.3,1) ${.8 + (i % 3) * .05}s both` } }, h('use', { href: i % 3 ? '#hib' : '#spk' }));
+    }));
+}
 const FOOT_SPK = [
   { t: 40, l: '16%', s: 20 }, { t: 90, l: '80%', s: 16, dl: .7 }, { t: 200, l: '10%', s: 12, c: '#FF8FBE', dl: 1.2 },
   { t: 160, l: '88%', s: 22, dl: .4 }, { t: 20, l: '62%', s: 12, c: '#FF8FBE', dl: 1.8 }
 ];
 
 class Component extends DCLogic {
-  state = { form: { ...EMPTY }, saved: null, errors: {}, now: Date.now(), sending: false };
+  state = { form: { ...EMPTY }, saved: null, errors: {}, now: Date.now(), sending: false, playing: false, intro: 'open', burst: false };
 
   componentDidMount() {
     try {
@@ -213,8 +317,35 @@ class Component extends DCLogic {
       if (s) this.setState({ saved: s, form: { ...EMPTY, ...s } });
     } catch (e) {}
     this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    // El volumen ya viene bajado en el archivo: iOS ignora audio.volume.
+    this.audio = new Audio('assets/cancion.mp3');
+    this.audio.loop = true;
+    // Arranca en el 0:10 (solo se puede fijar cuando el archivo ya cargó); al repetir vuelve al inicio.
+    this.audio.preload = 'auto';
+    this.audio.addEventListener('loadedmetadata', () => { this.audio.currentTime = 10; }, { once: true });
+    document.documentElement.style.overflow = 'hidden';
+    this.audio.onplay = () => this.setState({ playing: true });
+    this.audio.onpause = () => this.setState({ playing: false });
   }
-  componentWillUnmount() { clearInterval(this.t); }
+  componentWillUnmount() { clearInterval(this.t); this.audio.pause(); }
+
+  // El toque en "Abrir invitación" es la interacción que el navegador exige para sonar.
+  openIntro = () => {
+    if (this.state.intro !== 'open') return;
+    this.audio.play().catch(() => {});
+    this.setState({ intro: 'closing', burst: true });
+    setTimeout(() => {
+      document.documentElement.style.overflow = '';
+      window.scrollTo(0, 0);
+      this.setState({ intro: null });
+    }, 1750);
+    setTimeout(() => this.setState({ burst: false }), 2100);
+  };
+
+  toggleMusic = () => {
+    if (this.audio.paused) this.audio.play().catch(() => {});
+    else this.audio.pause();
+  };
 
   setForm(p) { this.setState(s => ({ form: { ...s.form, ...p }, errors: {} })); }
 
@@ -257,6 +388,7 @@ class Component extends DCLogic {
     const yes = saved && saved.attending === 'yes';
     const first = saved ? saved.name.split(' ')[0] : '';
     const anim = this.props.animate ?? true;
+    const closing = this.state.intro === 'closing';
     return {
       babyName: name,
       heroSparkles: anim ? sparkles(HERO_SPK) : null,
@@ -276,6 +408,24 @@ class Component extends DCLogic {
       setNo: () => this.setForm({ attending: 'no' }),
       inc: () => this.setForm({ guests: Math.min(5, form.guests + 1) }),
       dec: () => this.setForm({ guests: Math.max(0, form.guests - 1) }),
+      showIntro: !!this.state.intro,
+      introAnim: closing ? 'introOut .6s cubic-bezier(.6,0,.4,1) 1.1s both' : 'none',
+      // Sobre: el sello salta, la solapa (capa de arriba) gira y se oculta, queda la de atrás abierta y sube la tarjeta.
+      sealAnim: closing ? 'sealPop .35s ease-in both' : 'pulse 1.8s ease-out 1.9s infinite',
+      flapTopAnim: closing ? 'flapOpen .45s ease-in .2s both, hide 0s linear .42s both' : 'none',
+      flapAnim: closing ? 'flapOpen .45s ease-in .2s both' : 'none',
+      headAnim: closing ? 'outUp .35s ease-in both' : 'none',
+      btnAnim: closing ? 'outDown .3s ease-in both' : 'none',
+      cardAnim: closing ? 'cardUp .55s cubic-bezier(.2,.8,.3,1) .55s both' : 'none',
+      introFlowers: anim ? fallingFlowers() : null,
+      introSparkles: anim ? sparkles(INTRO_SPK) : null,
+      burst: this.state.burst,
+      burstFlowers: this.state.burst ? burstFlowers() : null,
+      pageAnim: this.state.intro === 'open' ? 'none' : 'pageIn .9s cubic-bezier(.2,.8,.2,1) 1.6s both',
+      openIntro: this.openIntro,
+      playing: this.state.playing,
+      toggleMusic: this.toggleMusic,
+      musicLabel: this.state.playing ? 'Pausar música' : 'Reproducir música',
       submit: this.submit,
       submitLabel: this.state.sending ? 'Enviando…' : 'Confirmar asistencia',
       edit: () => this.setState({ saved: null }),

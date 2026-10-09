@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Página de una sola vista (mobile-first, máx. 440px) para el baby shower de Eva Angelin: hero, cuenta regresiva, fecha/lugar (domingo 8 nov 2026, 2:00 PM, Bosques de Kennedy, Bogotá), links a Google Calendar / Maps / Waze y formulario RSVP.
 
-No hay build, package.json, tests ni git. Para verla: `python3 -m http.server` en la raíz y abrir `http://localhost:8000` (abrir el archivo con `file://` puede fallar al cargar los scripts).
+No hay build, package.json, tests ni git. Para verla: `npx -y http-server -p 8001 -c-1` en la raíz y abrir `http://localhost:8001`. No usar `python3 -m http.server`: no soporta peticiones `Range`, así que el audio no puede saltar al segundo de inicio (GitHub Pages sí las soporta).
 
 ## Arquitectura
 
@@ -24,3 +24,7 @@ Las constantes están al inicio del script: `KEY = 'babyshower-rsvp-v1'`, `TARGE
 La respuesta (`{ id, name, attending: 'yes'|'no', guests: 0..5, at }`) se guarda en `localStorage` y, si `RSVP_URL` tiene valor, también se envía por POST a un Web App de Google Apps Script (`apps-script.gs`, que vive pegado en la hoja de Google, no se despliega con el sitio). El `id` (UUID que se genera en el primer envío) es la llave: cuando alguien cambia su respuesta, el script sobrescribe su fila en vez de agregar otra. El POST va como `text/plain` a propósito, para que el navegador no haga preflight CORS. Si el envío falla, la respuesta no queda como guardada y se muestra `errors.send`.
 
 Hosting: GitHub Pages, publicando desde la rama `main` en la raíz.
+
+## Portada y música
+
+Al cargar se muestra una portada a pantalla completa (`intro: 'open'`). El toque en "Abrir invitación" es la interacción que el navegador exige para reproducir audio con sonido; el scroll no cuenta. La portada y el botón de música están **fuera de `<main>`** a propósito: `<main>` se anima con `transform` (`pageIn`), y eso rompería su `position:fixed`. El volumen de `assets/cancion.mp3` está bajado en el archivo mismo (ffmpeg, -19 dB) porque iOS ignora `audio.volume`.
